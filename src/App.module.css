@@ -1,0 +1,20 @@
+.root {
+  overflow: hidden;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  margin: 30px 60px;
+}
+
+.backbox {
+  position: absolute;
+  top: 140px;
+  left: -100px;
+  width: 115%;
+  transform: rotate(-30deg);
+}

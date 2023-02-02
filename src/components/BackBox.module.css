@@ -1,0 +1,15 @@
+.box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.fade_box {
+  background: #f0f0f0;
+  opacity: 0.45;
+  height: 392.5px;
+  width: 100%;
+}

@@ -1,0 +1,11 @@
+.bars_container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.bars {
+  height: 10px;
+  width: 50%;
+  background: #e0e8fc;
+}

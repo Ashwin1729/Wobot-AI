@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styles from "./Login.module.css";
 import { TextField } from "@mui/material";
 import solidLines from "../assets/Solid_lines.png";
 
@@ -11,11 +10,18 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
 import { Link } from "react-router-dom";
+import styles from "./SignUp.module.css";
 
-const Login = () => {
+const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const [confirmPassword, setConfirmPassword] = useState(false);
+  const handleClickConfirmPassword = () => setConfirmPassword((show) => !show);
+  const handleMouseDownConfirmPassword = (event) => {
     event.preventDefault();
   };
 
@@ -25,12 +31,32 @@ const Login = () => {
         <div className={styles.top_logo}>
           <img src={solidLines} alt="solid-lines-logo" />
         </div>
-        <p>Sign in to your Account</p>
+        <p>Sign up as a New User!</p>
         <form>
           <div className={styles.form_field}>
             <TextField
               id="standard-basic"
-              label="Email / Username"
+              label="Full Name"
+              type="text"
+              variant="standard"
+              fullWidth
+              size="small"
+            />
+          </div>
+          <div className={styles.form_field}>
+            <TextField
+              id="standard-basic"
+              label="Email"
+              type="email"
+              variant="standard"
+              fullWidth
+              size="small"
+            />
+          </div>
+          <div className={styles.form_field}>
+            <TextField
+              id="standard-basic"
+              label="Username"
               variant="standard"
               fullWidth
               size="small"
@@ -39,7 +65,7 @@ const Login = () => {
           <div className={styles.form_field}>
             <FormControl sx={{ width: "100%" }} variant="standard">
               <InputLabel htmlFor="standard-adornment-password">
-                Password
+                Choose Password
               </InputLabel>
               <Input
                 id="standard-adornment-password"
@@ -58,15 +84,37 @@ const Login = () => {
               />
             </FormControl>
           </div>
+          <div className={styles.form_field}>
+            <FormControl sx={{ width: "100%" }} variant="standard">
+              <InputLabel htmlFor="standard-adornment-password">
+                Confirm Password
+              </InputLabel>
+              <Input
+                id="standard-adornment-password"
+                type={confirmPassword ? "text" : "password"}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickConfirmPassword}
+                      onMouseDown={handleMouseDownConfirmPassword}
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
+          </div>
           <button className={styles.submit_button} type="submit">
-            Log In
+            Sign Up
           </button>
         </form>
       </div>
 
       <div className={styles.login_footer}>
         <div className={styles.create_account}>
-          New here? <Link to="/create_account">Create an account</Link>{" "}
+          Already a User? <Link to="/">Sign In</Link>{" "}
         </div>
         <div className={styles.privacy_policy}>
           Terms of use | Privacy policy
@@ -76,4 +124,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
